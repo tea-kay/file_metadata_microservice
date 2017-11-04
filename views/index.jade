@@ -1,5 +1,18 @@
 extends layout
 
+extends layout
+
 block content
-  h1= title
-  p Welcome to #{title}
+  h1 Tim's FreeCodeCamp Project
+  h2 File Metadata Microservice
+
+  p Instructions:
+  p.red Upload any file of your choice and you will receive the file size in bytes
+
+  form(method="post", enctype="multipart\/form-data", action="/nodejs-upload/")
+      input(type="hidden", name="file", value=sessionId)
+
+      p Image:
+          input(type="file", name="image")
+      p
+          input(type="submit", value="Upload")
