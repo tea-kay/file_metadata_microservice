@@ -11,7 +11,7 @@ var users = require('./routes/users');
 
 var app = express();
 
-var upload = multer({ dest: 'uploads/' })
+var upload = multer()
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -29,8 +29,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/users', users);
 
-app.post('/upload', upload.single('file'), function(req, res, next) {
-  
+app.post('/upload', upload.single('image'), function(req, res, next) {
+  return res.render('index', { title: 'Express', size: req.file.size })
 });
 
 // catch 404 and forward to error handler
